@@ -1,0 +1,1 @@
+enum Area {Services, Kitchen}
