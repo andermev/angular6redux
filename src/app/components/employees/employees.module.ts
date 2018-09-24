@@ -7,20 +7,20 @@ import * as fromEmployees from './store';
 import {EffectsModule} from '@ngrx/effects';
 import { EmployeesIndexComponent } from './employees-index/employees-index.component';
 import { EmployeeEffects } from './store/effects/employee.effect';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { SharedModule } from './modules/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     EmployeesRoutingModule,
     StoreModule.forFeature('employees', fromEmployees.reducers),
     EffectsModule.forFeature([EmployeeEffects])
   ],
   declarations: [
     EmployeesComponent,
-    EmployeesIndexComponent,
-    EmployeeListComponent
+    EmployeesIndexComponent
   ]
 })
 export class EmployeesModule { }
