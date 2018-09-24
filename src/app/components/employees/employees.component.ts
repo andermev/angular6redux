@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  template: `
+    <router-outlet></router-outlet>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class EmployeesComponent {
+  constructor() {}
 }
