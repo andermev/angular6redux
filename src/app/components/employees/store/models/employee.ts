@@ -12,6 +12,11 @@ export interface Employee {
     tipRate: number;
 }
 
+enum Area {
+    Services = 'SERVICES',
+    Kitchen = 'KITCHEN'
+}
+
 export function generateMockEmployee(): Employee {
     return {
         id: '1',
