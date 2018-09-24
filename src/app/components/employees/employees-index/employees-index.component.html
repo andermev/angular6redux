@@ -1,3 +1,6 @@
-<p>
-  employees-index works!
-</p>
+<h1> Employee list</h1>
+<app-employee-list [employees]="employees$ | async"
+                  (show)="showEmployee($event)"
+                  (remove)="deleteEmployee($event)"
+                  (edit)="editEmployee($event)"
+></app-employee-list>

@@ -2,17 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { EmployeesComponent } from './components/employees/employees.component';
-import { EmployeesIndexComponent } from './employees-index/employees-index.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './components/employees/modules/shared.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EmployeesComponent,
-    EmployeesIndexComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    EffectsModule.forRoot([]) /* Start monitoring app's side effects */
   ],
   providers: [],
   bootstrap: [AppComponent]

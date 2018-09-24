@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-employees-index',
   templateUrl: './employees-index.component.html',
-  styleUrls: ['./employees-index.component.css']
+  styleUrls: ['./employees-index.component.sass']
 })
 export class EmployeesIndexComponent implements OnInit {
 

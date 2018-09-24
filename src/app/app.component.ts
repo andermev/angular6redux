@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <app-toolbar [title]="currentPageTitle$ | async" ></app-toolbar>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = 'andersonmejia-reduxtest';
-}
+export class AppComponent {}

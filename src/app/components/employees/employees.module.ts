@@ -7,6 +7,7 @@ import * as fromEmployees from './store';
 import {EffectsModule} from '@ngrx/effects';
 import { EmployeesIndexComponent } from './employees-index/employees-index.component';
 import { EmployeeEffects } from './store/effects/employee.effect';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { EmployeeEffects } from './store/effects/employee.effect';
   ],
   declarations: [
     EmployeesComponent,
-    EmployeesIndexComponent
+    EmployeesIndexComponent,
+    EmployeeListComponent
   ]
 })
 export class EmployeesModule { }
