@@ -1,17 +1,32 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { getAllEmployeesSelector } from '../store/selector/employee.selector';
-import { Store } from '@ngrx/store';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Employee } from '../store/models/employee';
 
 @Component({
+  selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class EmployeeListComponent  {
-  employeeData$: Observable<Employee[]>;
+  @Input() employees: Employee[];
+  @Output() edit = new EventEmitter<Employee>();
+  @Output() show = new EventEmitter<Employee>();
+  @Output() remove = new EventEmitter<Employee>();
 
-  constructor(public store: Store<Employee>) {
-     this.employeeData$ = this.store.select(getAllEmployeesSelector);
+  employeesTrackByFn = (index: number, employee: Employee) => employee.id;
+
+  constructor() {}
+
+  showDetails(employee: Employee) {
+    this.show.emit(employee);
+  }
+
+  editEmployee(employee: Employee) {
+    this.edit.emit(employee);
+  }
+
+  deleteEmployee(employee: Employee) {
+    this.remove.emit(employee);
   }
 }

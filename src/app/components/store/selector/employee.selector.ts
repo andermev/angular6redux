@@ -20,4 +20,5 @@ export const getAllEmployeesSelector = createSelector(getEmployeeState,
   fromFeature.selectAllEmployee);
 
   // get Artifact loaded
-export const getEmployeeLoadedSelector = createSelector(getEmployeeState, fromFeature.getEmployeeLoaded);
+export const getEmployeeLoadedSelector = createSelector(getEmployeeState,
+  fromFeature.getEmployeeLoaded);

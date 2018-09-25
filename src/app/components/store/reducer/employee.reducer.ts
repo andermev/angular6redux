@@ -29,14 +29,14 @@ export const EMPLOYEE_INITIAL_STATE: EmployeeState = employeeAdapter.getInitialS
 export function employeeReducer(state = EMPLOYEE_INITIAL_STATE,
   action: EmployeeAction.EmployeeApiActions): EmployeeState {
   switch (action.type) {
-    case EmployeeAction.ActionTypes.loadEmployeeInformation: {
+    case EmployeeAction.ActionTypes.LOAD_ALL: {
       return {
         ...state,
         loading: true,
         loaded: false,
       };
     }
-    case EmployeeAction.ActionTypes.informationFetchSucceeded: {
+    case EmployeeAction.ActionTypes.LOAD_ALL_SUCCESS: {
       return employeeAdapter.addAll(action.payload, {
         ...state,
         loaded: true,

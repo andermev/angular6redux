@@ -1,9 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Employee } from '../store/models/employee';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import * as appReducer from '../store/root/root.reducer';
+import { Delete, SetCurrentEmployeeId } from '../store/actions/employee.action';
+import { getAllEmployeesSelector } from '../store/Selector/employee.selector';
+
 
 @Component({
   templateUrl: './employee.component.html',
 })
 
-export class EmployeeComponent  {
+export class EmployeeComponent implements OnInit {
+  employeesData$: Observable<Employee[]>;
 
+  constructor(public store: Store<Employee>, private router: Router, private actR: ActivatedRoute) { }
+
+  ngOnInit() {
+    // getAllEmployees selector from the main store allows us to monitor changes only on id list from the main state
+    // without monitoring the rest of the state
+    this.employeesData$ = this.store.pipe(
+      select(getAllEmployeesSelector)
+    );
+  }
+
+  editEmployee(employee: Employee) {
+    this.store.dispatch(new SetCurrentEmployeeId(Number(employee.id)));
+    this.router.navigate(['/employees', employee.id, 'edit']);
+  }
+
+  showEmployee(employee: Employee) {
+    this.store.dispatch(new SetCurrentEmployeeId(Number(employee.id)));
+    this.router.navigate(['/employees', employee.id]);
+  }
+
+  deleteEmployee(employee: Employee) {
+    const r = confirm('Are you sure?');
+    if (r) {
+      this.store.dispatch(new Delete(Number(employee.id)));
+    }
+  }
 }
