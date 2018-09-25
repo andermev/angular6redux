@@ -18,9 +18,9 @@ export class EmployeesService {
 
   }
 
-  show(conactId: number): Observable<Employee> {
+  show(employeeId: number): Observable<Employee> {
     return this.http
-        .get<Employee>(`${environment.appApi.baseUrl}/employees/${conactId}`);
+        .get<Employee>(`${environment.appApi.baseUrl}/employees/${employeeId}`);
 
   }
 
