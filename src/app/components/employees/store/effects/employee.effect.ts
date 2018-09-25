@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { switchMap, startWith, map } from 'rxjs/operators';
+import { Action, select, Store } from '@ngrx/store';
+import { switchMap, startWith, map, filter } from 'rxjs/operators';
 import { generateMockEmployees, Employee } from '../models/employee';
 
 import {
@@ -9,7 +9,8 @@ import {
   LoadAll,
   LoadAllSuccess
 } from '../actions/employee.action';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
+import { getEmployeesState } from '..';
 
 @Injectable()
 export class EmployeeEffects {
@@ -19,17 +20,17 @@ export class EmployeeEffects {
   // ) { }
 
   // @Effect() loadEmployeeEffect$ = combineLatest(
-  //   this.store.pipe(select(getEmployeeLoaded)),
+  //   this.store.pipe(select(getEmployeesState)),
   // ).pipe(
   //   filter(([loaded]) => !loaded),
   //   switchMap(() => {
-  //     return of(new InformationFetchSucceeded(generateMockEmployees()));
+  //     return of(new LoadAllSuccess(generateMockEmployees()));
   //   }),
   // );
 
   @Effect()
-  loadAll$: Observable<Action> = this.actions$.pipe(
-      ofType(EmployeeActionTypes.LOAD_ALL), /* When [Employees] LOAD ALL action is dispatched */
+  loadEmployeeEffect$: Observable<Action> = this.actions$.pipe(
+      ofType(EmployeeActionTypes.LOAD_ALL_SUCCESS), /* When [Employees] LOAD ALL action is dispatched */
       startWith(new LoadAll()),
       switchMap(() => generateMockEmployees()), /* Hit the Employee mock items */
       /* Dispatch LoadAllSuccess action to the central store with id list returned by the backend as id*/

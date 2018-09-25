@@ -15,7 +15,7 @@ import { SharedModule } from './modules/shared.module';
     CommonModule,
     SharedModule,
     EmployeesRoutingModule,
-    StoreModule.forFeature('employees', fromEmployees.reducers),
+    StoreModule.forFeature(fromEmployees.employeeFeature, fromEmployees.reducers),
     EffectsModule.forFeature([EmployeeEffects])
   ],
   declarations: [

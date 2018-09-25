@@ -9,7 +9,7 @@ import { Employee } from '../models/employee';
 
 // This adapter will allow is to manipulate employees (mostly CRUD operations)
 export const employeeAdapter = createEntityAdapter<Employee>({
-  selectId: (employee: Employee) => employee.id,
+  selectId: (employee: Employee) => employee ? employee.id : null,
   sortComparer: false
 });
 

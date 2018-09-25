@@ -13,7 +13,9 @@ export const reducers = {
   employees: fromEmployees.reducer
 };
 
-export const getEmployeesRootState = createFeatureSelector<EmployeesState>('employees');
+export const employeeFeature = 'employee';
+
+export const getEmployeesRootState = createFeatureSelector<EmployeesState>(employeeFeature);
 
 export const getEmployeesState = createSelector(
     getEmployeesRootState,

@@ -9,24 +9,24 @@
   </tr>
   </thead>
   <tbody>
-  <tr class="employee-row" *ngFor="let c of employees; trackBy: employeesTrackByFn">
-    <th scope="row">{{c.id}}</th>
-    <td>{{c.name}}</td>
-    <td>{{c.email}}</td>
-    <td>{{c.phone}}</td>
+  <tr class="employee-row" *ngFor="let emp of employees; trackBy: employeesTrackByFn">
+    <th scope="row">{{emp.id}}</th>
+    <td>{{emp.name}}</td>
+    <td>{{emp.age}}</td>
+    <td>{{emp.username}}</td>
     <td>
 
       <span class="float-right">
 
-        <button (click)="showDetails(c)" class="btn btn-outline-primary mb-1 btn-sm">
+        <button (click)="showDetails(emp)" class="btn btn-outline-primary mb-1 btn-sm">
           DETAILS
         </button>
 
-        <button (click)="editEmployee(c)" class="btn btn-outline-warning mb-1 btn-sm">
+        <button (click)="editEmployee(emp)" class="btn btn-outline-warning mb-1 btn-sm">
           EDIT
         </button>
 
-        <button (click)="deleteEmployee(c)" class="btn btn-outline-danger mb-1 btn-sm">
+        <button (click)="deleteEmployee(emp)" class="btn btn-outline-danger mb-1 btn-sm">
           DELETE
         </button>
 
