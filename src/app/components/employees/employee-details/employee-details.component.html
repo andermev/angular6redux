@@ -1,0 +1,5 @@
+<app-employee-details-container
+        [employee]="employee$ | async"
+        (edit)="editEmployee($event)"
+        (remove)="deleteEmployee($event)"
+></app-employee-details-container>

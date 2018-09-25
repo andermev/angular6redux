@@ -20,11 +20,11 @@
     "paths": {
       "@app-core/*": ["src/app/core/*"],
 
-      "@app-root-store/*": ["src/app/components/ui/store/*"],
-      "@app-root-store": ["src/app/components/ui/store/index"],
+      "@app-root-store/*": ["src/app/components/root-store/*"],
+      "@app-root-store": ["src/app/components/root-store/index"],
 
-      "@app-contacts-store/*": ["src/app/views/contacts/store/*"],
-      "@app-contacts-store": ["src/app/views/contacts/store/index"]
+      "@app-employees-store/*": ["src/app/views/employees/store/*"],
+      "@app-employees-store": ["src/app/views/employees/store/index"]
     }
   }
 }
