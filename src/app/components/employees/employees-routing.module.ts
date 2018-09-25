@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeesComponent } from './employees.component';
 import { EmployeesIndexComponent } from './employees-index/employees-index.component';
+import { TitleResolver } from '../../resolvers/title.resolver';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
         path: '',
         component: EmployeesIndexComponent,
         data: {title: 'Employee index'},
-        pathMatch: 'full'
+        pathMatch: 'full',
+        resolve: {title: TitleResolver}
       }
     ]
   }

@@ -16,6 +16,15 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app-core/*": ["src/app/core/*"],
+
+      "@app-root-store/*": ["src/app/components/ui/store/*"],
+      "@app-root-store": ["src/app/components/ui/store/index"],
+
+      "@app-contacts-store/*": ["src/app/views/contacts/store/*"],
+      "@app-contacts-store": ["src/app/views/contacts/store/index"]
+    }
   }
 }
