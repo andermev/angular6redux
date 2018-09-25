@@ -16,8 +16,7 @@ import { getEmployeesState } from '..';
 export class EmployeeEffects {
 
   constructor(
-    private store: Store<Employee>,
-    private actions$: Actions
+    private store: Store<Employee>
   ) { }
 
   @Effect() loadEmployeeEffect$ = combineLatest(
@@ -29,20 +28,5 @@ export class EmployeeEffects {
       return of(new LoadAllSuccess(generateMockEmployees()));
     }),
   );
-
-  // @Effect()
-  // loadEmployeeEffect$: Observable<Action> = this.actions$.pipe(
-  //     ofType(EmployeeActionTypes.LOAD_ALL), /* When [Employees] LOAD ALL action is dispatched */
-  //     startWith(new LoadAll()),
-  //     switchMap(() => generateMockEmployees()), /* Hit the Employee mock items */
-  //     /* Dispatch LoadAllSuccess action to the central store with id list returned by the backend as id*/
-  //     /* 'Employee Reducers' will take care of the mock */
-  //     map((employees: Employee[]) => new LoadAllSuccess(employees))
-  //   );
-
-  //   constructor(
-  //     private actions$: Actions
-  // ) {}
-
 
 }
