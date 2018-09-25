@@ -6,10 +6,10 @@ import {combineReducers, StoreModule} from '@ngrx/store';
 import * as fromEmployees from '@app-employees-store';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Actions} from '@ngrx/effects';
-import {EmployeesEffects} from '../store/effects/employees-effects';
+import {EmployeeEffects} from '@app-employees-store/effects/employee.effect';
 import {HttpClientModule} from '@angular/common/http';
-import {EmployeeFormComponent} from '@app-core/components/employee-form/employee-form.component';
-import {EmployeesService} from '@app-core/services/employees.service';
+import {EmployeeFormComponent} from '@app-root/employees/employee-form/employee-form.component';
+import {EmployeesService} from '@app-root/root-store/services/employee.service';
 import * as fromRoot from '@app-root-store';
 
 
@@ -30,7 +30,7 @@ describe('EmployeeNewComponent', () => {
         HttpClientModule
       ],
       providers: [
-        EmployeesEffects,
+        EmployeeEffects,
         Actions,
         EmployeesService,
       ]

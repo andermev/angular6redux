@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import { Employee } from '@app-core/models';
 import {ActionsSubject, Store} from '@ngrx/store';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
 import * as fromRoot from '@app-root-store';
-import {EmployeesActionTypes, Create, CreateSuccess} from '@app-employees-store/actions/employees-actions';
+import {EmployeeActionTypes, Create, CreateSuccess} from '@app-employees-store/actions/employee.action';
 import {ofType} from '@ngrx/effects';
+import { Employee } from '@app-root/employees/store/models/employee';
 
 @Component({
   selector: 'app-employee-new',
@@ -26,7 +26,7 @@ export class EmployeeNewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.redirectSub = this.actionsSubject.asObservable().pipe(
-      ofType(EmployeesActionTypes.CREATE_SUCCESS)
+      ofType(EmployeeActionTypes.CREATE_SUCCESS)
     ).subscribe(
       (action: CreateSuccess) => this.router.navigate(['/employees', action.payload.id])
     );

@@ -5,13 +5,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {combineReducers, StoreModule} from '@ngrx/store';
 import {RouterTestingModule} from '@angular/router/testing';
 import * as fromEmployees from '@app-employees-store';
-import {ActivatedRoute} from '@angular/router';
 import {Actions} from '@ngrx/effects';
-import {EmployeesEffects} from '../store/effects/employees-effects';
 import {HttpClientModule} from '@angular/common/http';
-import {EmployeeFormComponent} from '@app-core/components/employee-form/employee-form.component';
-import {EmployeesService} from '@app-core/services/employees.service';
+import {EmployeeFormComponent} from '@app-root/employees/employee-form/employee-form.component';
+import {EmployeesService} from '@app-root/root-store/services/employee.service';
 import * as fromRoot from '@app-root-store';
+import {EmployeeEffects} from '@app-employees-store/effects/employee.effect';
 
 
 describe('EmployeeEditComponent', () => {
@@ -31,7 +30,7 @@ describe('EmployeeEditComponent', () => {
         HttpClientModule
       ],
       providers: [
-        EmployeesEffects,
+        EmployeeEffects,
         Actions,
         EmployeesService,
       ]

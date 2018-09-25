@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import { Employee } from '@app-core/models';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Employee, Area } from '@app-root/employees/store/models/employee';
 
 
 @Component({
@@ -12,10 +12,17 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class EmployeeFormComponent implements OnInit, OnChanges {
 
   @Input() employee: Employee = {
-    id: undefined,
+    id: '',
     name: '',
-    email: '',
-    phone: ''
+    jobTitle: '',
+    age: 0,
+    username: '',
+    hireDate: new Date(),
+    dateOfBirth: new Date(),
+    country: '',
+    status: true,
+    area: Area.Services,
+    tipRate: 0
   };
 
   @Output() save = new EventEmitter<Employee>();
@@ -24,10 +31,17 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   constructor(public formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      'id': [this.employee.id],
+      'id': [this.employee.id, Validators.required],
       'name': [this.employee.name, Validators.required],
-      'email': [this.employee.email, Validators.required],
-      'phone': [this.employee.phone]
+      'jobTitle': [this.employee.jobTitle, Validators.required],
+      'age': [this.employee.age],
+      'username': [this.employee.username],
+      'hireDate': [this.employee.hireDate],
+      'dateOfBirth': [this.employee.dateOfBirth],
+      'country': [this.employee.country],
+      'status': [this.employee.status],
+      'area': [this.employee.area],
+      'tipRate': [this.employee.tipRate]
     });
   }
 

@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Employee } from '@app-core/models';
-
+import { Employee } from '@app-root/employees/store/models/employee';
 
 @Component({
   selector: 'app-employee-details-container',

@@ -2,13 +2,7 @@ import { Action } from '@ngrx/store';
 import { Employee } from '../models/employee';
 import { Update } from '@ngrx/entity/src/models';
 
-export enum ActionTypes {
-  LOAD_EMPLOYEE_INFORMATION = 'EMPLOYEE_INFORMATION/LOAD',
-  INFORMATION_FETCH_SUCCEEDED = 'INFORMATION_FETCH/SUCCEEDED',
-}
-
 export enum EmployeeActionTypes {
-
   LOAD_ALL = '[Employee] LOAD ALL',
   LOAD_ALL_SUCCESS = '[Employee] LOAD ALL SUCCESS',
   LOAD = '[Employee] LOAD',
@@ -20,26 +14,8 @@ export enum EmployeeActionTypes {
   DELETE = '[Employee] DELETE',
   DELETE_SUCCESS = '[Employee] DELETE SUCCESS',
   FAILURE = '[Employee] FAILURE',
-  SET_CURRENT_EMPLOYEE_ID = '[Employee] SET CURRENT EMPLOYEE ID',
-  // SERVER SIDE SOCKET ACTIONS
-  LIVE_CREATED = '[Employee] LIVE CREATED',
-  LIVE_UPDATED = '[Employee] LIVE UPDATED',
-  LIVE_DELETED = '[Employee] LIVE DELETED'
+  SET_CURRENT_EMPLOYEE_ID = '[Employee] SET CURRENT EMPLOYEE ID'
 }
-
-
-export class LoadEmployeeInformation implements Action {
-  readonly type = ActionTypes.LOAD_EMPLOYEE_INFORMATION;
-  constructor() { }
-}
-
-export class InformationFetchSucceeded implements Action {
-  readonly type = ActionTypes.INFORMATION_FETCH_SUCCEEDED;
-  constructor(public payload: Employee[]) { }
-}
-
-export type EmployeeApiActions = LoadEmployeeInformation
-  | InformationFetchSucceeded;
 
 export class SetCurrentEmployeeId implements Action {
   readonly type = EmployeeActionTypes.SET_CURRENT_EMPLOYEE_ID;

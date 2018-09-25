@@ -8,6 +8,9 @@ import {EffectsModule} from '@ngrx/effects';
 import { EmployeesIndexComponent } from './employees-index/employees-index.component';
 import { EmployeeEffects } from './store/effects/employee.effect';
 import { SharedModule } from './modules/shared.module';
+import { EmployeeDetailsComponent } from '@app-root/employees/employee-details/employee-details.component';
+import { EmployeeEditComponent } from '@app-root/employees/employee-edit/employee-edit.component';
+import { EmployeeNewComponent } from '@app-root/employees/employee-new/employee-new.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { SharedModule } from './modules/shared.module';
   ],
   declarations: [
     EmployeesComponent,
-    EmployeesIndexComponent
+    EmployeesIndexComponent,
+    EmployeeDetailsComponent,
+    EmployeeEditComponent,
+    EmployeeNewComponent
   ]
 })
 export class EmployeesModule { }

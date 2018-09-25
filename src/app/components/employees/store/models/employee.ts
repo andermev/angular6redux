@@ -12,7 +12,7 @@ export interface Employee {
     tipRate: number;
 }
 
-enum Area {
+export enum Area {
     Services = 'SERVICES',
     Kitchen = 'KITCHEN'
 }

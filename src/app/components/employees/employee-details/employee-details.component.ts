@@ -2,20 +2,20 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/co
 import {Store, ActionsSubject, select} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
-import { Employee } from '@app-core/models';
 
 
 import * as fromEmployees from '@app-employees-store';
 import {
-  EmployeesActionTypes,
+  EmployeeActionTypes,
   Delete,
   DeleteSuccess,
   Load,
   SetCurrentEmployeeId
-} from '@app-employees-store/actions/employees-actions';
+} from '@app-employees-store/actions/employee.action';
 import * as fromRoot from '@app-root-store';
 import {filter} from 'rxjs/operators';
 import {ofType} from '@ngrx/effects';
+import { Employee } from '../store/models/employee';
 
 @Component({
   selector: 'app-employee-details',
@@ -43,13 +43,13 @@ export class EmployeeDetailsComponent implements OnInit, OnDestroy {
 
     // If the destroy effect fires, we check if the current id is the one being viewed, and redirect to index
     this.redirectSub = this.actionsSubject.pipe(
-        ofType(EmployeesActionTypes.DELETE_SUCCESS),
+        ofType(EmployeeActionTypes.DELETE_SUCCESS),
         filter((action: DeleteSuccess) =>
           action.payload === +this.activatedRoute.snapshot.params['employeeId'])
-  ).subscribe(_ => this.router.navigate(['/employees']));
+    ).subscribe(_ => this.router.navigate(['/employees']));
 
     this.redirectSub = this.actionsSubject.pipe(
-      filter(action => action.type === EmployeesActionTypes.DELETE_SUCCESS),
+      filter(action => action.type === EmployeeActionTypes.DELETE_SUCCESS),
     ).subscribe(
       _ => this.router.navigate(['/employees'])
     );
@@ -65,7 +65,7 @@ export class EmployeeDetailsComponent implements OnInit, OnDestroy {
 
   editEmployee(employee: Employee) {
 
-    this.store.dispatch(new SetCurrentEmployeeId(employee.id));
+    this.store.dispatch(new SetCurrentEmployeeId(Number(employee.id)));
 
     this.router.navigate(['/employees', employee.id, 'edit']);
 
@@ -74,7 +74,7 @@ export class EmployeeDetailsComponent implements OnInit, OnDestroy {
   deleteEmployee(employee: Employee) {
     const r = confirm('Are you sure?');
     if (r) {
-      this.store.dispatch(new Delete(employee.id));
+      this.store.dispatch(new Delete(Number(employee.id)));
     }
   }
 

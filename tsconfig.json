@@ -18,13 +18,13 @@
       "dom"
     ],
     "paths": {
-      "@app-core/*": ["src/app/core/*"],
+      "@app-root/*": ["src/app/components/*"],
 
       "@app-root-store/*": ["src/app/components/root-store/*"],
       "@app-root-store": ["src/app/components/root-store/index"],
 
-      "@app-employees-store/*": ["src/app/views/employees/store/*"],
-      "@app-employees-store": ["src/app/views/employees/store/index"]
+      "@app-employees-store/*": ["src/app/components/employees/store/*"],
+      "@app-employees-store": ["src/app/components/employees/store/index"]
     }
   }
 }

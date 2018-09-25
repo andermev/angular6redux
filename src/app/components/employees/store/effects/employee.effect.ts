@@ -9,7 +9,7 @@ import {
   LoadAll,
   LoadAllSuccess
 } from '../actions/employee.action';
-import { Observable, combineLatest, of } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
 import { getEmployeesState } from '..';
 
 @Injectable()

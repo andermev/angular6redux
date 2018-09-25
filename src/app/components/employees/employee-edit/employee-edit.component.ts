@@ -1,15 +1,15 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import { Employee } from '@app-core/models';
 import {Store, ActionsSubject, select} from '@ngrx/store';
 
 import {State} from '../store';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import * as fromEmployee from '@app-employees-store';
-import {EmployeesActionTypes, Load, Patch, PatchSuccess} from '@app-employees-store/actions/employees-actions';
+import * as fromEmployees from '@app-root/employees/store';
+import {EmployeeActionTypes, Load, Patch, PatchSuccess} from '@app-employees-store/actions/employee.action';
 import {filter} from 'rxjs/operators';
 import {ofType} from '@ngrx/effects';
+import { Employee } from '@app-root/employees/store/models/employee';
 
 
 @Component({
@@ -39,7 +39,7 @@ export class EmployeeEditComponent implements OnInit, OnDestroy {
 
     // If the update effect fires, we check if the current id is the one being updated, and redirect to its details
     this.redirectSub = this.actionsSubject.pipe(
-        ofType(EmployeesActionTypes.PATCH_SUCCESS),
+        ofType(EmployeeActionTypes.PATCH_SUCCESS),
         filter((action: PatchSuccess) => action.payload.id === +this.activatedRoute.snapshot.params['employeeId'])
     ).subscribe(
       (action: PatchSuccess) => this.router.navigate(['/employees', action.payload.id])

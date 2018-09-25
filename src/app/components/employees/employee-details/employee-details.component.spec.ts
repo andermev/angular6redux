@@ -5,13 +5,13 @@ import { EmployeeDetailsComponent } from './employee-details.component';
 import {combineReducers, StoreModule} from '@ngrx/store';
 import {RouterTestingModule} from '@angular/router/testing';
 import * as fromEmployees from '@app-employees-store';
-import {EmployeesEffects} from '../store/effects/employees-effects';
+import {EmployeeEffects} from '@app-employees-store/effects/employee.effect';
 import {Actions} from '@ngrx/effects';
 import * as fromRoot from '@app-root-store';
 
 import {HttpClientModule} from '@angular/common/http';
-import {EmployeeDetailsContainerComponent} from '@app-core/components/employee-details/employee-details-container.component';
-import {EmployeesService} from '@app-core/services/employees.service';
+import {EmployeeDetailsContainerComponent} from '@app-root/employees/employee-details-view/employee-details-container.component';
+import {EmployeesService} from '@app-root/root-store/services/employee.service';
 
 
 describe('EmployeeDetailsComponent', () => {
@@ -30,7 +30,7 @@ describe('EmployeeDetailsComponent', () => {
         })
       ],
       providers: [
-        EmployeesEffects,
+        EmployeeEffects,
         Actions,
         EmployeesService
       ]

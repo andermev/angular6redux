@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmployeeFormComponent } from './employee-form.component';
+import { EmployeeFormComponent } from '@app-root/employees/employee-form/employee-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 describe('EmployeeFormComponent', () => {
