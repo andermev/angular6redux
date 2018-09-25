@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { getAllEmployeesSelector } from '../store/employee/selector/employee.selector';
+import { getAllEmployeesSelector } from '../store/selector/employee.selector';
 import { Store } from '@ngrx/store';
-import { Employee } from '../store/employee/models/employee';
+import { Employee } from '../store/models/employee';
 
 @Component({
   templateUrl: './employee-list.component.html',

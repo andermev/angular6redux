@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '../environments/environment';
-import { EmployeeStoreModule } from '../app/components/store/employee/employee-store.module';
+import { EmployeeStoreModule } from './components/store/employee-store.module';
 import { appReducer, CustomSerialier } from '../app/components/store/root/root.reducer';
 import { AppComponent } from './app.component';
 import { routes } from './app.route';
