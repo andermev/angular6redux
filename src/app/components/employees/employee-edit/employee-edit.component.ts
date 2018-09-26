@@ -57,7 +57,7 @@ export class EmployeeEditComponent implements OnInit, OnDestroy {
   }
 
   submitted(employee: Employee) {
-    this.store.dispatch(new PatchSuccess({id: employee.id, changes: employee}));
+    this.store.dispatch(new PatchSuccess({id: +employee.id, changes: employee}));
   }
 
 }
