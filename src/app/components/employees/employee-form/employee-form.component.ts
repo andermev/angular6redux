@@ -49,6 +49,9 @@ export class EmployeeFormComponent implements OnChanges, AfterContentChecked {
       'tipRate': [this.employee.tipRate, Validators.required]
     };
 
+    /**
+     * Not valid the name field on the form when the edit option is choosen by user.
+     */
     if (this.isEditScreen) {
       delete this.formGroupConfiguration['name'];
     }
