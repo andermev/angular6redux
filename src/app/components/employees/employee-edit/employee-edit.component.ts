@@ -42,7 +42,7 @@ export class EmployeeEditComponent implements OnInit, OnDestroy {
         ofType(EmployeeActionTypes.PATCH_SUCCESS),
         filter((action: PatchSuccess) => action.payload.id === +this.activatedRoute.snapshot.params['employeeId'])
     ).subscribe(
-      (action: PatchSuccess) => this.router.navigate(['/employees', action.payload.id])
+      (action: PatchSuccess) => this.router.navigate(['/employees'])
     );
 
     this.activatedRoute.params.subscribe(params => {
