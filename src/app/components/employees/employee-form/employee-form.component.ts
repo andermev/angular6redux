@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, AfterContentChecked} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, AfterContentChecked, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Employee, Area } from '@app-root/employees/store/models/employee';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-employee-form',
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-form.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeFormComponent implements OnChanges, AfterContentChecked {
+export class EmployeeFormComponent implements OnChanges, OnInit, AfterContentChecked {
 
   @Input() employee: Employee = {
     id: '',
@@ -18,8 +17,8 @@ export class EmployeeFormComponent implements OnChanges, AfterContentChecked {
     jobTitle: '',
     age: 0,
     username: '',
-    hireDate: new Date(),
-    dateOfBirth: new Date(),
+    hireDate: undefined,
+    dateOfBirth: undefined,
     country: '',
     status: true,
     area: Area.Services,
@@ -58,6 +57,11 @@ export class EmployeeFormComponent implements OnChanges, AfterContentChecked {
     }
 
     this.form = this.formBuilder.group(this.formGroupConfiguration);
+  }
+
+  ngOnInit(): void {
+    this.form.controls.hireDate.setValue(this.employee.hireDate.toISOString().substring(0, 10));
+    this.form.controls.dateOfBirth.setValue(this.employee.dateOfBirth.toISOString().substring(0, 10));
   }
 
   ngAfterContentChecked() {
