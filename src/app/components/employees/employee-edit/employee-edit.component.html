@@ -6,7 +6,7 @@
     Edit Employee
   </div>
   <div class="card-body">
-    <app-employee-form [employee]="employee$ | async" (save)="submitted($event)"> </app-employee-form>
+    <app-employee-form [employee]="employee$ | async" (save)="submitted($event)" [disabledForm]="false"> </app-employee-form>
 
   </div>
 

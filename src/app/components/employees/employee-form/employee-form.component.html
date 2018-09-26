@@ -1,24 +1,46 @@
 <form (submit)="submit()"  class="form" [formGroup]="form">
 
   <div class="form-group">
-    <label for="name-input">Name:</label>
-    <input id="name-input" type="text" class="form-control" formControlName="name">
+    <label for="dob-input">Date of birth:</label>
+    <input id="dob-input" type="date" class="form-control" formControlName="dateOfBirth">
   </div>
 
   <div class="form-group">
-    <label for="email-input">Email:</label>
-    <input id="email-input" type="email" class="form-control" formControlName="email">
+    <label for="country-input">Country:</label>
+    <input id="country-input" type="text" class="form-control" formControlName="country">
   </div>
 
-
-
   <div class="form-group">
-    <label for="phone-input">Phone:</label>
-    <input id="phone-input" type="tel" class="form-control" formControlName="phone">
+    <label for="username-input">Username:</label>
+    <input id="username-input" type="text" class="form-control" formControlName="username">
   </div>
 
+  <div class="form-group">
+    <label for="hireDate-input">Hire Date:</label>
+    <input id="hireDate-input" type="date" class="form-control" formControlName="hireDate">
+  </div>
 
   <div class="form-group">
+    <label for="status-input">Status:</label>
+    <input id="status-input" type="checkbox" class="form-control" formControlName="status">
+  </div>
+
+  <div class="form-group">
+    <label for="area-input">Area:</label>
+    <input id="area-input" type="text" class="form-control" formControlName="area">
+  </div>
+
+  <div class="form-group">
+    <label for="jobTitle-input">Job Title:</label>
+    <input id="jobTitle-input" type="text" class="form-control" formControlName="jobTitle">
+  </div>
+
+  <div class="form-group">
+    <label for="tipRate-input">Tip rate:</label>
+    <input id="tipRate-input" type="number" step="0.01" class="form-control" formControlName="tipRate">
+  </div>
+
+  <div class="form-group" *ngIf="!disabledForm">
     <button
             type="submit"
             [disabled]="!form.valid"

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, AfterViewChecked} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Employee, Area } from '@app-root/employees/store/models/employee';
 
@@ -9,7 +9,7 @@ import { Employee, Area } from '@app-root/employees/store/models/employee';
   styleUrls: ['./employee-form.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeFormComponent implements OnInit, OnChanges {
+export class EmployeeFormComponent implements OnChanges, AfterViewChecked {
 
   @Input() employee: Employee = {
     id: '',
@@ -26,6 +26,8 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   };
 
   @Output() save = new EventEmitter<Employee>();
+
+  @Input() disabledForm;
 
   form: FormGroup;
 
@@ -45,8 +47,12 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit() {
-
+  ngAfterViewChecked() {
+    if (this.disabledForm) {
+      this.form.disable();
+    } else {
+      this.form.enable();
+    }
   }
 
   ngOnChanges() {

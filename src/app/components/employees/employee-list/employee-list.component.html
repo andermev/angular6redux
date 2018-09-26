@@ -1,19 +1,19 @@
 <table *ngIf="employees; else loading" class="table table-hover">
   <thead>
   <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
+    <th>Name (Job Title)</th>
+    <th>Age</th>
+    <th>Username</th>
+    <th>Hire Date</th>
     <th></th>
   </tr>
   </thead>
   <tbody>
   <tr class="employee-row" *ngFor="let emp of employees; trackBy: employeesTrackByFn">
-    <th scope="row">{{emp.id}}</th>
-    <td>{{emp.name}}</td>
+    <th scope="row">{{emp.name}} ({{emp.jobTitle}})</th>
     <td>{{emp.age}}</td>
     <td>{{emp.username}}</td>
+    <td>{{emp.hireDate | date: 'yyyy/MM/dd'}}</td>
     <td>
 
       <span class="float-right">
