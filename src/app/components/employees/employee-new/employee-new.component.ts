@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
 import * as fromRoot from '@app-root-store';
-import {EmployeeActionTypes, Create, CreateSuccess} from '@app-employees-store/actions/employee.action';
+import {EmployeeActionTypes, CreateSuccess} from '@app-employees-store/actions/employee.action';
 import {ofType} from '@ngrx/effects';
 import { Employee } from '@app-root/employees/store/models/employee';
 
@@ -28,7 +28,7 @@ export class EmployeeNewComponent implements OnInit, OnDestroy {
     this.redirectSub = this.actionsSubject.asObservable().pipe(
       ofType(EmployeeActionTypes.CREATE_SUCCESS)
     ).subscribe(
-      (action: CreateSuccess) => this.router.navigate(['/employees', action.payload.id])
+      (action: CreateSuccess) => this.router.navigate(['/employees'])
     );
 
   }
@@ -38,7 +38,8 @@ export class EmployeeNewComponent implements OnInit, OnDestroy {
   }
 
   submitted(employee: Employee) {
-    this.store.dispatch(new Create(employee));
+    employee.id = String(Math.floor(Math.random() * 100000) + 1);
+    this.store.dispatch(new CreateSuccess(employee));
   }
 
 }
