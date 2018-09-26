@@ -10,7 +10,6 @@ import {Actions} from '@ngrx/effects';
 import * as fromRoot from '@app-root-store';
 
 import {HttpClientModule} from '@angular/common/http';
-import {EmployeeDetailsContainerComponent} from '@app-root/employees/employee-details-view/employee-details-container.component';
 import {EmployeesService} from '@app-root/root-store/services/employee.service';
 
 
@@ -20,7 +19,7 @@ describe('EmployeeDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmployeeDetailsComponent, EmployeeDetailsContainerComponent],
+      declarations: [ EmployeeDetailsComponent ],
       imports: [
         RouterTestingModule,
         HttpClientModule,

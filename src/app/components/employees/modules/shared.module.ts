@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EmployeeDetailsContainerComponent } from '@app-root/employees/employee-details-view/employee-details-container.component';
 import { EmployeeFormComponent } from '@app-root/employees/employee-form/employee-form.component';
 
 @NgModule({
@@ -18,14 +17,12 @@ import { EmployeeFormComponent } from '@app-root/employees/employee-form/employe
     EmployeeListComponent,
     ToolbarComponent,
     FooterComponent,
-    EmployeeDetailsContainerComponent,
     EmployeeFormComponent
   ],
   exports: [
     EmployeeListComponent,
     ToolbarComponent,
     FooterComponent,
-    EmployeeDetailsContainerComponent,
     EmployeeFormComponent
   ]
 })

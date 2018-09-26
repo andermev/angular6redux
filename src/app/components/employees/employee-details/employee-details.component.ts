@@ -7,10 +7,8 @@ import {Observable, Subscription} from 'rxjs';
 import * as fromEmployees from '@app-employees-store';
 import {
   EmployeeActionTypes,
-  Delete,
   DeleteSuccess,
-  Load,
-  SetCurrentEmployeeId
+  Load
 } from '@app-employees-store/actions/employee.action';
 import * as fromRoot from '@app-root-store';
 import {filter} from 'rxjs/operators';
@@ -60,22 +58,6 @@ export class EmployeeDetailsComponent implements OnInit, OnDestroy {
       this.store.dispatch(new Load(+params['employeeId']));
     });
 
-  }
-
-
-  editEmployee(employee: Employee) {
-
-    this.store.dispatch(new SetCurrentEmployeeId(Number(employee.id)));
-
-    this.router.navigate(['/employees', employee.id, 'edit']);
-
-  }
-
-  deleteEmployee(employee: Employee) {
-    const r = confirm('Are you sure?');
-    if (r) {
-      this.store.dispatch(new Delete(Number(employee.id)));
-    }
   }
 
   ngOnDestroy() {
