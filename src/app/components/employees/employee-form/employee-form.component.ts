@@ -37,6 +37,7 @@ export class EmployeeFormComponent implements OnChanges, AfterContentChecked {
     this.isEditScreen = router.url.includes('/edit');
 
     this.formGroupConfiguration = {
+      'id': [this.employee.id],
       'name': [this.employee.name, Validators.required],
       'jobTitle': [this.employee.jobTitle, Validators.required],
       'age': [this.employee.age, Validators.required],

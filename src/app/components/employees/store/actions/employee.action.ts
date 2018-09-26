@@ -37,7 +37,6 @@ export class Create implements Action {
   constructor(public payload: Employee) {}
 }
 
-
 export class Patch implements Action {
   readonly type = EmployeeActionTypes.PATCH;
   constructor(public payload: Employee) {}
