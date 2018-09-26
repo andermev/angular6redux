@@ -14,6 +14,7 @@ export class EmployeeListComponent implements OnInit {
   @Output() edit = new EventEmitter<Employee>();
   @Output() show = new EventEmitter<Employee>();
   @Output() remove = new EventEmitter<Employee>();
+  @Output() create = new EventEmitter<Employee>();
 
   employeesTrackByFn = (index: number, employee: Employee) => employee.id;
 
@@ -32,6 +33,10 @@ export class EmployeeListComponent implements OnInit {
 
   deleteEmployee(employee: Employee) {
     this.remove.emit(employee);
+  }
+
+  createEmployee() {
+    this.create.emit();
   }
 
 }

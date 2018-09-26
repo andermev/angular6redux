@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import * as fromEmployees from '../store/index';
-import { Delete, SetCurrentEmployeeId } from '../store/actions/employee.action';
+import { Delete, SetCurrentEmployeeId, Create } from '../store/actions/employee.action';
 
 @Component({
   selector: 'app-employees-index',
@@ -41,6 +41,10 @@ export class EmployeesIndexComponent implements OnInit {
     if (r) {
       this.store.dispatch(new Delete(Number(employee.id)));
     }
+  }
+
+  createEmployee() {
+    this.router.navigate(['/employees', 'new']);
   }
 
 }

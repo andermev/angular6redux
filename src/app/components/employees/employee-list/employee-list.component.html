@@ -1,7 +1,8 @@
 <table *ngIf="employees; else loading" class="table table-hover">
   <thead>
   <tr>
-    <th>Name (Job Title)</th>
+    <th>Name</th>
+    <th>Job Title</th>
     <th>Age</th>
     <th>Username</th>
     <th>Hire Date</th>
@@ -10,7 +11,8 @@
   </thead>
   <tbody>
   <tr class="employee-row" *ngFor="let emp of employees; trackBy: employeesTrackByFn">
-    <th scope="row">{{emp.name}} ({{emp.jobTitle}})</th>
+    <th scope="row">{{emp.name}}</th>
+    <td>{{emp.jobTitle}}</td>
     <td>{{emp.age}}</td>
     <td>{{emp.username}}</td>
     <td>{{emp.hireDate | date: 'yyyy/MM/dd'}}</td>
@@ -37,6 +39,12 @@
 
   </tbody>
 </table>
+
+<div class="table table-hover">
+  <button (click)="createEmployee()" class="btn btn-outline-primary mb-1 btn-sm">
+    Add new employee
+  </button>
+</div>
 
 <ng-template #loading>
   <span>loading employees...</span>
