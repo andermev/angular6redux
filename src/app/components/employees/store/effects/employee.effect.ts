@@ -16,10 +16,12 @@ import {
   Create,
   Patch,
   Failure,
-  Delete
+  Delete,
+  LoadAllCountries
 } from '../actions/employee.action';
 import { combineLatest, of, Observable } from 'rxjs';
-import { getEmployeesState } from '..';
+import { getEmployeesState, getCountriesState } from '..';
+import { EmployeesService } from '@app-root/root-store/services/employee.service';
 // import { EmployeesService } from '@app-root/root-store/services/employee.service';
 
 @Injectable()
@@ -32,7 +34,7 @@ export class EmployeeEffects {
     startWith(new LoadAll()),
     switchMap(() => {
       return of(new LoadAllSuccess(generateMockEmployees()));
-    }),
+    })
   );
 
   // @Effect()
@@ -92,9 +94,21 @@ export class EmployeeEffects {
     )
   );
 
+  @Effect()
+  getCountries$ = this.actions$.pipe(
+    select(getCountriesState),
+    ofType(EmployeeActionTypes.LOAD_ALL_COUNTRIES),
+    switchMap(() => this.employeesService.getCountries()),
+    map((action: LoadAllCountries) => action.payload),
+    catchError(err => {
+      alert(err['error']['error']['message']);
+      return of(new Failure({concern: 'PATCH', error: err}));
+    })
+  );
+
   constructor(
     private actions$: Actions,
-    // private employeesService: EmployeesService,
+    private employeesService: EmployeesService,
     private store: Store<Employee>
 ) {}
 

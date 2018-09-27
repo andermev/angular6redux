@@ -6,6 +6,7 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeFormComponent } from '@app-root/employees/employee-form/employee-form.component';
+import { JobtitleComponent } from '@app-root/employees/jobtitle/jobtitle.component';
 
 @NgModule({
   imports: [
@@ -17,13 +18,15 @@ import { EmployeeFormComponent } from '@app-root/employees/employee-form/employe
     EmployeeListComponent,
     ToolbarComponent,
     FooterComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    JobtitleComponent
   ],
   exports: [
     EmployeeListComponent,
     ToolbarComponent,
     FooterComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    JobtitleComponent
   ]
 })
 export class SharedModule { }

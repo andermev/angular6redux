@@ -14,7 +14,9 @@ export enum EmployeeActionTypes {
   DELETE = '[Employee] DELETE',
   DELETE_SUCCESS = '[Employee] DELETE SUCCESS',
   FAILURE = '[Employee] FAILURE',
-  SET_CURRENT_EMPLOYEE_ID = '[Employee] SET CURRENT EMPLOYEE ID'
+  SET_CURRENT_EMPLOYEE_ID = '[Employee] SET CURRENT EMPLOYEE ID',
+  LOAD_COUNTRIES = '[Employee] LOAD_COUNTRIES',
+  LOAD_ALL_COUNTRIES = '[Employee] LOAD_ALL_COUNTRIES'
 }
 
 export class SetCurrentEmployeeId implements Action {
@@ -77,6 +79,16 @@ export class Failure implements Action {
   constructor (public payload: {concern: 'CREATE' | 'PATCH', error: any}) {}
 }
 
+export class LoadCountries implements Action {
+  readonly type = EmployeeActionTypes.LOAD_COUNTRIES;
+  constructor(public payload = []) {}
+}
+
+export class LoadAllCountries implements Action {
+  readonly type = EmployeeActionTypes.LOAD_ALL_COUNTRIES;
+  constructor(public payload = []) {}
+}
+
 export type All =
     | SetCurrentEmployeeId
     | LoadAll
@@ -89,4 +101,5 @@ export type All =
     | PatchSuccess
     | CreateSuccess
     | DeleteSuccess
-    | Failure;
+    | Failure
+    | LoadAllCountries;

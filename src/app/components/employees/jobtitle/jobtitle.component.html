@@ -1,0 +1,9 @@
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Select Job Title
+  </button>
+  <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" *ngFor="let value of values" (click)="selectItem(value.value)">{{value.label}}</a>
+    <!-- <li class="dropdown-item" *ngFor="let value of values" (click)="selectItem(value.value)">{{value.label}}</li> -->
+  </div>
+</div>

@@ -31,13 +31,24 @@
   </div>
 
   <div class="form-group">
-    <label for="area-input">Area:</label>
-    <input id="area-input" type="text" class="form-control" formControlName="area">
+    <label for="area-input">Area </label>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" value="SERVICES" class="form-check-input" formControlName="area">Services
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" value="KITCHEN" class="form-check-input" formControlName="area">Kitchen
+      </label>
+    </div>
+    <!-- <input id="area-input" type="text" class="form-control" formControlName="area"> -->
   </div>
 
   <div class="form-group">
     <label for="jobTitle-input">Job Title:</label>
-    <input id="jobTitle-input" type="text" class="form-control" formControlName="jobTitle">
+    <app-jobtitle [typeArea]="areaChooseByUser"></app-jobtitle>
+    <!-- <input id="jobTitle-input" type="text" class="form-control" formControlName="jobTitle"> -->
   </div>
 
   <div class="form-group">

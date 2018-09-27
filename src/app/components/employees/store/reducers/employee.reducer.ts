@@ -13,17 +13,6 @@ export const employeeAdapter = createEntityAdapter<Employee>({
   sortComparer: false
 });
 
-// -----------------------------------------
-// The shape of EntityState
-// ------------------------------------------
-// interface EntityState<Employee> {
-//   ids: string[] | number[];
-//   entities: { [id: string]: Employee };
-// }
-// -----------------------------------------
-// -> ids arrays allow us to sort data easily
-// -> entities map allows us to access the data quickly without iterating/filtering though an array of objects
-
 export interface State extends EntityState<Employee> {
   currentEmployeeId?: number;
 }
@@ -31,8 +20,6 @@ export interface State extends EntityState<Employee> {
 export const INIT_STATE: State = employeeAdapter.getInitialState({
   currentEmployeeId: undefined
 });
-
-
 
 export function reducer(
   state: State = INIT_STATE,

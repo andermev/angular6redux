@@ -11,30 +11,10 @@ export class EmployeesService {
 
   constructor(private http: HttpClient ) { }
 
-
-  index(): Observable<Employee[]> {
+  getCountries(): Observable<any> {
     return this.http
-        .get<Employee[]>(`${environment.appApi.baseUrl}/employees`);
+        .get(`${environment.apiCountries.baseUrl}`);
 
-  }
-
-  show(employeeId: number): Observable<Employee> {
-    return this.http
-        .get<Employee>(`${environment.appApi.baseUrl}/employees/${employeeId}`);
-
-  }
-
-  create(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(`${environment.appApi.baseUrl}/employees`, employee);
-  }
-
-  update(employee: Employee): Observable<Employee> {
-    return this.http.patch<Employee>(`${environment.appApi.baseUrl}/employees/${employee.id}`, employee);
-  }
-
-
-  destroy(id: number): Observable<Employee> {
-    return this.http.delete<Employee>(`${environment.appApi.baseUrl}/employees/${id}`);
   }
 
 }

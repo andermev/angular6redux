@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  appApi: {
-    baseUrl: 'http://localhost:3002'
+  apiCountries: {
+    baseUrl: 'https://restcountries.eu/rest/v2/all'
   }
 };
 

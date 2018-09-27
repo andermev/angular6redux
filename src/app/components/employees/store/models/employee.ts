@@ -49,6 +49,32 @@ export function generateMockEmployees(): Employee[] {
             tipRate: 0.5
         },
         {
+            id: '2',
+            name: 'Marco Botton',
+            jobTitle: 'Tuttofare',
+            age: 38,
+            username: 'Marcopolo',
+            hireDate: new Date('2001/01/10'),
+            dateOfBirth: new Date('1985/03/26'),
+            country: 'French',
+            status: true,
+            area: Area.Services,
+            tipRate: 0.5
+        },
+        {
+            id: '3',
+            name: 'Mariah Maclachlan',
+            jobTitle: 'Better Half',
+            age: 41,
+            username: 'Patata',
+            hireDate: new Date('2016/02/01'),
+            dateOfBirth: new Date('1990/07/05'),
+            country: 'USA',
+            status: true,
+            area: Area.Services,
+            tipRate: 0.5
+        },
+        {
             id: '4',
             name: 'Valery Liberty',
             jobTitle: 'Head Chef',

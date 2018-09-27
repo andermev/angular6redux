@@ -2,7 +2,9 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Outp
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Employee, Area } from '@app-root/employees/store/models/employee';
 import { Router } from '@angular/router';
-
+import { Store, select } from '@ngrx/store';
+import * as fromCountries from '../store/index';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
@@ -31,9 +33,13 @@ export class EmployeeFormComponent implements OnChanges, OnInit, AfterContentChe
   form: FormGroup;
   isEditScreen = false;
   formGroupConfiguration = {};
+  areaChooseByUser;
 
-  constructor(public formBuilder: FormBuilder, private router: Router) {
+  countriesData$: Observable<Employee[]>;
+
+  constructor(public formBuilder: FormBuilder, private router: Router, public store: Store<fromCountries.State>) {
     this.isEditScreen = router.url.includes('/edit');
+    this.areaChooseByUser = this.employee.area;
 
     this.formGroupConfiguration = {
       'id': [this.employee.id],
@@ -62,6 +68,10 @@ export class EmployeeFormComponent implements OnChanges, OnInit, AfterContentChe
   ngOnInit(): void {
     this.form.controls.hireDate.setValue(this.employee.hireDate.toISOString().substring(0, 10));
     this.form.controls.dateOfBirth.setValue(this.employee.dateOfBirth.toISOString().substring(0, 10));
+
+    this.countriesData$ = this.store.pipe(
+      select(fromCountries.getAllCountries)
+    );
   }
 
   ngAfterContentChecked() {
