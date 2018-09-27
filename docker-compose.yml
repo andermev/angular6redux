@@ -1,0 +1,38 @@
+
+
+
+version: '2'
+
+services:
+  db:
+    image: mysql:10
+    restart: always
+    ports:
+    - 5432
+    volumes:
+    - ./data/employees_dev:/employees_dev
+    environment:
+      MYSQL_USER: employees_dev
+      MYSQL_PASSWORD: employees_dev_pass
+      MYSQL_DB: employees_dev
+      PGDATA: /employees_dev
+
+  api:
+    image: avatsaev/angular-employees-api:dev
+    restart: always
+    ports:
+    - 3000:3000
+    depends_on:
+    - db
+    environment:
+      DB_MASTER_URL: mysql://employees_dev:employees_dev_pass@db/employees_dev
+
+  client:
+    build:
+      context: .
+      args:
+        NG_ENV: local
+    restart: always
+    ports:
+      - 4000:80
+
